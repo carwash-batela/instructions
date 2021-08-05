@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    
+    <html>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    
+        
+        <h2>Car Wash</h2>
+        <img src="logo1mpy.png" alt="" id="logo" >
+        
+
+        <div class="plaviokvir"></div>
+        <div class="prvitekst">
+        <p>Choose a language./ Wähle eine Sprache./ Scegli una lingua./ Choisir une langue./ Wybierz język.</p>
+        </div>
+
+        <img src="slatervroom_drbbbl.gif" alt="" id="pozslika">
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">SELECT</button>
+          <div id="myDropdown" class="dropdown-content" onclick="promijeniboju(); pojavi();">
+            <a href="#hrvatski" onclick=before();>Hrvatski</a>
+            <a href="#engelski" onclick=afterr();>English</a>
+            <a href="#njemacki" onclick="njemacki();">Deutsche</a>
+            <a href="#poljski" onclick="poljski();">Polskie</a>
+            <a href="#talijanksi" onclick="talijanski();">Italiano</a>
+            <a href="#francuski" onclick="francuski();">Français</a>
+          </div>
+        </div>
+        <section id="pozslika1">
+            <div class="sekcija">
+            <img id="myImage" src="">
+            <h1 id="message"></h1>
+
+            <h1 id="program0"></h1>
+            <p id="program01"></p>
+
+            <h1 id="program1"></h1>
+            <p id="program11"></p>
+            
+            <h1 id="program2"></h1>
+            <p id="program21"></p>
+
+            <h1 id="program3"></h1>
+            <p id="program31"></p>
+
+<p id="details"></p>
+
+            <h1 id="dodatnisadržaji"></h1>
+            <p id="informacije"></p>
+
+<img src="gloos tire.png" alt="" id="glosstire">
+
+            <h1 id="cjenik"></h1>
+            <p id="cijene10"></p>
+            <p id="cijene20"></p>
+            <p id="cijene50"></p>
+            <p id="cijene100"></p>
+            <p id="zeton"></p>
+
+
+
+            <button onclick="window.location.href='https://www.google.com/search?q=autopraonica+split&oq=a&aqs=chrome.1.69i60j69i59j69i60l3j5l3.5230j0j7&sourceid=chrome&ie=UTF-8&tbs=lf:1,lf_ui:3&sxsrf=ALeKk013ZqYPDRxIQ6StQQdsO6owoy_vFw:1628185313700&rflfq=1&num=10&rldimm=12115534257420119355&lqi=ChJhdXRvcHJhb25pY2Egc3BsaXRIpYOSiPGtgIAIWhoQABgAGAEiEmF1dG9wcmFvbmljYSBzcGxpdJIBCGNhcl93YXNoqgEUEAEqECIMYXV0b3ByYW9uaWNhKBw&ved=2ahUKEwjX44D6tpryAhXkgv0HHTUzCO0QvS4wBXoECAYQGQ&rlst=f&ibp=gwp;0,6#trex=m_t:lcl_akp,rc_f:rln,rc_ludocids:12115534257420119355,ru_gwp:0%252C7,ru_lqi:ChJhdXRvcHJhb25pY2Egc3BsaXRIpYOSiPGtgIAIWhoQABgAGAEiEmF1dG9wcmFvbmljYSBzcGxpdJIBCGNhcl93YXNoqgEUEAEqECIMYXV0b3ByYW9uaWNhKBw,trex_id:uVUQXc/'" id="recenzija"></button>
+            </div>
+        </section>
+        
+        <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+
+        // fuction for changing picture
+        function before(){
+             document.getElementById('myImage')
+             .src="Screenshot_1.png";
+             document.getElementById('message')
+             .innerHTML="Hrvatski";
+         }
+           
+         function afterr(){
+             document.getElementById('myImage')
+             .src="pra2.png";
+             document.getElementById('message')
+             .innerHTML="English";
+
+             document.getElementById('program0')
+             .innerHTML="RIM WASHING  -  WHITE BUTTON";
+             document.getElementById('program01')
+             .innerHTML="Detergent for washing your rims, tires or flies. The detergent will come out slowly through your syringe. Duration; 5kn = 80 sec of washing";
+
+             document.getElementById('program1')
+             .innerHTML="WASHING  -  RED BUTTON";
+             document.getElementById('program11')
+             .innerHTML="65 'C hot water mixed with powder and shampoo. Keep the sprayer 10 to 15 cm away from the car so that you can remove stubborn stains and dirt. In the beginning, it would be good to quickly wet the car with that programme, and after that start with a more detailed washing of the filth. Wash your car from the roof towards the rear end of the vehicle. Duration: 5kn = 105 sec of washing";
+
+            document.getElementById('program2')
+             .innerHTML="RAIN-X  -  YELLOW BUTTON";
+             document.getElementById('program21')
+             .innerHTML= "Rain-X helps to repel water and other particulates from your vehicle while at the same time increasing visibility. Water will slide from your car. This is a quick procces, it doesnt need to be perfect and keep your sprayer 30 to 40cm from the car. Duration: 5kn = 75sec of washing ";
+
+             document.getElementById('recenzija')
+             .innerHTML="RATE US";
+             
+             document.getElementById('program3')
+             .innerHTML="RINSE  -  BLUE BUTTON";
+             document.getElementById('program31')
+             .innerHTML= "This water is 99% purified by osmosis. It does not leave traces or stains after drying. Stains will remain only after a poorly washed vehicle. Keep the sprayer 30 to 40 cm away from the car. Duration: 5kn = 105 sec of washing";
+
+
+             document.getElementById('details')
+             .innerHTML="Zoom in the picture for details"
+             document.getElementById('dodatnisadržaji')
+             .innerHTML="ADDITIONAL CONTENTS";
+             document.getElementById('informacije')
+             .innerHTML="We also have 6 vacuum cleaners with which you can arrange the interior of your car. And of course a gloss for your tires after a washed car."
+
+             document.getElementById('cjenik')
+             .innerHTML="PRICE LIST";
+             document.getElementById('cijene10')
+             .innerHTML="10,00 kn BILL = 2 TOKENS";
+             document.getElementById('cijene20')
+             .innerHTML="20,00 kn BILL = 4 TOKENS";
+             document.getElementById('cijene50')
+             .innerHTML="50,00 kn BILL = 10 + 1 TOKEN";
+             document.getElementById('cijene100')
+             .innerHTML="100,00 kn BILL = 20 + 3 TOKENS";
+             document.getElementById('zeton')
+             .innerHTML="1 TOKEN = 5,00 kn";
+         }
+
+
+
+        //njemacki jezik
+        function njemacki() {
+          document.getElementById('myImage')
+             .src="njemackipra.png";
+             document.getElementById('message')
+             .innerHTML="Deutsche";
+             
+             document.getElementById('program0')
+             .innerHTML="FELGENWÄSCHE - WEIßE TASTE";
+             document.getElementById('program01')
+             .innerHTML="Reinigungsmittel für Felgen, Reifen oder Fliegen. Die Chemie kommt langsam durch die Spritze heraus. Dauer; 5kn = 80 Sekunden Waschen";
+
+             document.getElementById('program1')
+             .innerHTML="WASCHEN - ROTER KNOPF";
+             document.getElementById('program11')
+             .innerHTML="65 °C heißes Wasser gemischt mit Pulver und Shampoo. Halten Sie das Sprühgerät 10 bis 15 cm vom Auto entfernt, damit Sie hartnäckige Flecken und Verschmutzungen entfernen können. Am Anfang wäre es gut, das Auto mit diesem Programm schnell nass zu machen und danach mit einer detaillierteren Schmutzwäsche zu beginnen. Waschen Sie Ihr Auto vom Dach in Richtung Fahrzeugheck. Dauer: 5kn = 105 Sek. Waschen";
+
+            document.getElementById('program2')
+             .innerHTML="RAIN-X - GELBE TASTE";
+             document.getElementById('program21')
+             .innerHTML= "Rain-X hilft, Wasser und andere Partikel von Ihrem Fahrzeug abzuwehren und gleichzeitig die Sichtbarkeit zu erhöhen. Wasser wird aus Ihrem Auto rutschen. Dies ist ein schneller Vorgang, es muss nicht perfekt sein und Ihr Sprühgerät 30 bis 40 cm vom Auto entfernt halten. Dauer: 5kn = 75sek Waschen";
+             
+             document.getElementById('recenzija')
+             .innerHTML="Bewerten Sie uns";
+
+             document.getElementById('program3')
+             .innerHTML="SPÜLEN - BLAUE TASTE";
+             document.getElementById('program31')
+             .innerHTML= "Dieses Wasser wird zu 99% durch Osmose gereinigt. Es hinterlässt keine Spuren oder Flecken nach dem Trocknen. Flecken bleiben nur nach einem schlecht gewaschenen Fahrzeug zurück. Halten Sie die Spritze 30 bis 40 cm vom Auto entfernt. Dauer: 5kn = 105 Sek. Waschen";
+
+
+             document.getElementById('details')
+             .innerHTML="Vergrößern Sie das Bild für Details"
+             document.getElementById('dodatnisadržaji')
+             .innerHTML="ZUSÄTZLICHE INHALTE";
+             document.getElementById('informacije')
+             .innerHTML="Wir haben auch 6 Staubsauger, mit denen Sie den Innenraum Ihres Autos gestalten können. Und natürlich ein Glanz für Ihre Reifen nach einem gewaschenen Auto."
+
+             document.getElementById('cjenik')
+             .innerHTML="PREISLISTE";
+             document.getElementById('cijene10')
+             .innerHTML="10,00 kn RECHNUNG = 2 TOKEN";
+             document.getElementById('cijene20')
+             .innerHTML="20,00 kn RECHNUNG = 4 TOKEN";
+             document.getElementById('cijene50')
+             .innerHTML="50,00 kn RECHNUNG = 10 + 1 TOKEN";
+             document.getElementById('cijene100')
+             .innerHTML="100,00 kn RECHNUNG = 20 + 3 TOKEN";
+             document.getElementById('zeton')
+             .innerHTML="1 TOKEN = 5,00 kn";
+        }
+
+        //talijanski jezik
+        function talijanski() {
+             document.getElementById('myImage')
+             .src="talijanskipra.png";
+             document.getElementById('message')
+             .innerHTML="Italiano";
+
+             document.getElementById('program0')
+             .innerHTML="LAVAGGIO CERCHI - BOTTONE BIANCO";
+             document.getElementById('program01')
+             .innerHTML="Detergente per il lavaggio di cerchi, pneumatici o mosche. Il detersivo uscirà lentamente attraverso la siringa. Durata; 5kn = 80 sec di lavaggio";
+
+             document.getElementById('program1')
+             .innerHTML="LAVAGGIO - TASTO ROSSO";
+             document.getElementById('program11')
+             .innerHTML="65 'C acqua calda miscelata con polvere e shampoo. Tieni lo spruzzatore a una distanza di 10-15 cm dall'auto in modo da poter rimuovere macchie e sporco ostinati. All'inizio sarebbe bene bagnare velocemente l'auto con quel programma, e poi iniziare con un lavaggio più dettagliato della sporcizia. Lava la tua auto dal tetto verso la parte posteriore del veicolo. Durata: 5kn = 105 sec di lavaggio";
+
+            document.getElementById('program2')
+             .innerHTML="RAIN-X - TASTO GIALLO";
+             document.getElementById('program21')
+             .innerHTML= "Rain-X aiuta a respingere l'acqua e altri particolati dal veicolo aumentando allo stesso tempo la visibilità. L'acqua scivolerà dalla tua auto. Questo è un processo rapido, non ha bisogno di essere perfetto e di mantenere il tuo spruzzatore da 30 a 40 cm dall'auto. Durata: 5kn = 75sec di lavaggio ";
+             
+             document.getElementById('recenzija')
+             .innerHTML="VOTACI";
+
+             document.getElementById('program3')
+             .innerHTML="RISCIACQUO - TASTO BLU";
+             document.getElementById('program31')
+             .innerHTML= "Quest'acqua è purificata al 99% per osmosi. Non lascia tracce o macchie dopo l'asciugatura. Le macchie rimarranno solo dopo un veicolo lavato male. Tenere lo spruzzatore a 30-40 cm di distanza dall'auto. Durata: 5kn = 105 sec di lavaggio";
+
+
+
+             document.getElementById('details')
+             .innerHTML="Ingrandisci l'immagine per i dettagli"
+             document.getElementById('dodatnisadržaji')
+             .innerHTML="CONTENUTI AGGIUNTIVI";
+             document.getElementById('informacije')
+             .innerHTML="Abbiamo anche 6 aspirapolvere con cui puoi sistemare l'interno della tua auto. E ovviamente un gloss per le tue gomme dopo aver lavato l'auto."
+
+             document.getElementById('cjenik')
+             .innerHTML="LISTINO PREZZI";
+             document.getElementById('cijene10')
+             .innerHTML="10,00 kn CONTO = 2 GETTONI";
+             document.getElementById('cijene20')
+             .innerHTML="20,00 kn CONTO = 4 GETTONI";
+             document.getElementById('cijene50')
+             .innerHTML="50,00 kn CONTO = 10 + 1 GETTONI";
+             document.getElementById('cijene100')
+             .innerHTML="100,00 kn CONTO = 20 + 3 GETTONI";
+             document.getElementById('zeton')
+             .innerHTML="1 GETTONI = 5,00 kn";
+         }
+
+
+         //poljski jezik
+         function poljski(){
+             document.getElementById('myImage')
+             .src="poljskipra.png";
+             document.getElementById('message')
+             .innerHTML="Polskie";
+
+             document.getElementById('program0')
+             .innerHTML="MYCIE OBRĘCZY - BIAŁY GUZ";
+             document.getElementById('program01')
+             .innerHTML="Środek do mycia felg, opon lub much. Detergent będzie powoli wypływał przez strzykawkę. Czas trwania; 5kn = 80 sekund prania";
+
+             document.getElementById('program1')
+             .innerHTML="PRANIE - CZERWONY PRZYCISK";
+             document.getElementById('program11')
+             .innerHTML="Gorąca woda 65'C zmieszana z proszkiem i szamponem. Opryskiwacz należy trzymać w odległości od 10 do 15 cm od samochodu, aby usunąć uporczywe plamy i zabrudzenia. Na początku dobrze by było szybko zmoczyć samochód tym programem, a potem zacząć od dokładniejszego mycia brudu. Umyj samochód od dachu do tyłu pojazdu. Czas trwania: 5kn = 105 sek prania";
+
+            document.getElementById('program2')
+             .innerHTML="RAIN-X - ŻÓŁTY PRZYCISK";
+             document.getElementById('program21')
+             .innerHTML= "Rain-X pomaga odpychać wodę i inne cząstki stałe z pojazdu, jednocześnie zwiększając widoczność. Woda wyślizgnie się z twojego samochodu. Jest to szybka procedura, nie musi być idealna i trzymać opryskiwacz w odległości 30 do 40 cm od samochodu. Czas trwania: 5kn = 75sek prania ";
+             
+             document.getElementById('recenzija')
+             .innerHTML="Oceń nas";
+
+             document.getElementById('program3')
+             .innerHTML="PŁUKANIE - NIEBIESKI PRZYCISK";
+             document.getElementById('program31')
+             .innerHTML= "Woda ta jest w 99% oczyszczona przez osmozę. Po wyschnięciu nie pozostawia śladów ani plam. Plamy pozostaną dopiero po źle umytym pojeździe. Opryskiwacz należy trzymać w odległości 30 do 40 cm od samochodu. Czas trwania: 5kn = 105 sek pra";
+
+             document.getElementById('details')
+             .innerHTML="Powiększ zdjęcie, aby zobaczyć szczegóły"
+             document.getElementById('dodatnisadržaji')
+             .innerHTML="DODATKOWE TREŚCI";
+             document.getElementById('informacije')
+             .innerHTML="Posiadamy również 6 odkurzaczy, za pomocą których możesz zaaranżować wnętrze swojego samochodu. I oczywiście połysk do opon po umytym aucie."
+
+             document.getElementById('cjenik')
+             .innerHTML="CENNIK";
+             document.getElementById('cijene10')
+             .innerHTML="10,00 kn RACHUNEK = 2 ŻETONÓW";
+             document.getElementById('cijene20')
+             .innerHTML="20,00 kn RACHUNEK = 4 ŻETONÓW";
+             document.getElementById('cijene50')
+             .innerHTML="50,00 kn RACHUNEK = 10 + 1 ŻETON";
+             document.getElementById('cijene100')
+             .innerHTML="100,00 kn RACHUNEK = 20 + 3 ŻETON";
+             document.getElementById('zeton')
+             .innerHTML="1 ŻETON = 5,00 kn";
+         }
+
+         //francuski jezik
+         function francuski() {
+          document.getElementById('myImage')
+             .src="francuskipra.png";
+             document.getElementById('message')
+             .innerHTML="Français";
+
+             document.getElementById('program0')
+             .innerHTML="LAVAGE DES JANTES - BOUTON BLANC";
+             document.getElementById('program01')
+             .innerHTML="Détergent pour laver vos jantes, pneus ou mouches. Le détergent sortira lentement de votre seringue. Durée; 5kn = 80 sec de lavage";
+
+             document.getElementById('program1')
+             .innerHTML="LAVAGE - BOUTON ROUGE";
+             document.getElementById('program11')
+             .innerHTML="65'C eau chaude mélangée à de la poudre et du shampoing. Gardez le pulvérisateur à 10 à 15 cm de la voiture afin de pouvoir éliminer les taches et la saleté tenaces. Au début, il serait bon de mouiller rapidement la voiture avec ce programme, puis de commencer par un lavage plus détaillé de la saleté. Lavez votre voiture du toit vers l'arrière du véhicule. Durée : 5kn = 105 sec de lavag";
+
+            document.getElementById('program2')
+             .innerHTML="RAIN-X - BOUTON JAUNE";
+             document.getElementById('program21')
+             .innerHTML= "Rain-X aide à repousser l'eau et les autres particules de votre véhicule tout en augmentant la visibilité. L'eau glissera de votre voiture. C'est un processus rapide, il n'a pas besoin d'être parfait et de garder votre pulvérisateur à 30 à 40 cm de la voiture. Durée : 5kn = 75sec de lavage";
+             
+             document.getElementById('recenzija')
+             .innerHTML="évaluez nous";
+
+             document.getElementById('program3')
+             .innerHTML="RINCER - BOUTON BLEU";
+             document.getElementById('program31')
+             .innerHTML= "Cette eau est purifiée à 99% par osmose. Il ne laisse pas de traces ni de taches après séchage. Les taches ne subsisteront qu'après un véhicule mal lavé. Gardez le pulvérisateur à 30 à 40 cm de la voiture. Durée : 5kn = 105 sec de lavage";
+
+
+
+             document.getElementById('details')
+             .innerHTML="Zoomez sur l'image pour plus de détails"
+             document.getElementById('dodatnisadržaji')
+             .innerHTML="CONTENU SUPPLÉMENTAIRE";
+             document.getElementById('informacije')
+             .innerHTML="Nous disposons également de 6 aspirateurs avec lesquels vous pourrez aménager l'intérieur de votre voiture. Et bien sûr un lustre pour vos pneus après une voiture lavée."
+
+             document.getElementById('cjenik')
+             .innerHTML="LISTE DE PRIX";
+             document.getElementById('cijene10')
+             .innerHTML="10,00 kn FACTURE = 2 JETONS";
+             document.getElementById('cijene20')
+             .innerHTML="20,00 kn FACTURE = 4 JETONS";
+             document.getElementById('cijene50')
+             .innerHTML="50,00 kn FACTURE = 10 + 1 JETON";
+             document.getElementById('cijene100')
+             .innerHTML="100,00 kn FACTURE = 20 + 3 JETON";
+             document.getElementById('zeton')
+             .innerHTML="1 JETON = 5,00 kn";
+         }
+
+        
+         function promijeniboju() {
+            document.getElementById("pozslika1").style.backgroundColor='#109ada';
+           
+         }
+         function pojavi() {
+           document.getElementById("recenzija").style.zIndex=2;
+           document.getElementById("glosstire").style.zIndex=2;
+           document.getElementById('pozslika').style.zIndex= -3;
+         }
+
+        </script>
+        
+
+
+
+</body>
+</html>
