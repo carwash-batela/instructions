@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cjenik datum="2026-09-10" jedinica="sekundi" pdv="25">
+  <kontakt email="carwash.batela@gmail.com"/>
+  <tarifa id="normalna" naziv="Normalna tarifa" od="08:00" do="21:30">
+    <grupa id="programi" naziv="Programi">
+      <stavka id="pranje" naziv="Pranje" sekundi="90"/>
+      <stavka id="ispiranje" naziv="Ispiranje" sekundi="96"/>
+      <stavka id="vosak-ceramic" naziv="Vosak / Ceramic" sekundi="85"/>
+      <stavka id="felge" naziv="Felge" sekundi="60"/>
+      <stavka id="cetke" naziv="Četke" sekundi="135"/>
+      <stavka id="aktivna-pjena" naziv="Aktivna pjena" sekundi="67"/>
+    </grupa>
+    <grupa id="usisavanje" naziv="Usisavanje">
+      <stavka id="usisavac" naziv="Usisavač" sekundi="200"/>
+    </grupa>
+    <grupa id="ostalo" naziv="Ostalo">
+      <stavka id="sjajilo" naziv="Sjajilo" sekundi="60"/>
+      <stavka id="miris" naziv="Miris" sekundi="45"/>
+    </grupa>
+    <grupa id="dubinsko" naziv="Dubinsko">
+      <stavka id="dubinsko-pranje" naziv="Dubinsko pranje" sekundi="65"/>
+      <stavka id="dubinsko-ispiranje" naziv="Dubinsko ispiranje" sekundi="115"/>
+    </grupa>
+  </tarifa>
+  <tarifa id="povlastena" naziv="Povlaštena tarifa" od="21:30" do="08:00">
+    <grupa id="programi" naziv="Programi">
+      <stavka id="pranje" naziv="Pranje" sekundi="105"/>
+      <stavka id="ispiranje" naziv="Ispiranje" sekundi="110"/>
+      <stavka id="vosak-ceramic" naziv="Vosak / Ceramic" sekundi="104"/>
+      <stavka id="felge" naziv="Felge" sekundi="70"/>
+      <stavka id="cetke" naziv="Četke" sekundi="135"/>
+      <stavka id="aktivna-pjena" naziv="Aktivna pjena" sekundi="70"/>
+    </grupa>
+    <grupa id="usisavanje" naziv="Usisavanje">
+      <stavka id="usisavac" naziv="Usisavač" sekundi="200"/>
+    </grupa>
+    <grupa id="ostalo" naziv="Ostalo">
+      <stavka id="sjajilo" naziv="Sjajilo" sekundi="60"/>
+      <stavka id="miris" naziv="Miris" sekundi="45"/>
+    </grupa>
+    <grupa id="dubinsko" naziv="Dubinsko">
+      <stavka id="dubinsko-pranje" naziv="Dubinsko pranje" sekundi="65"/>
+      <stavka id="dubinsko-ispiranje" naziv="Dubinsko ispiranje" sekundi="115"/>
+    </grupa>
+  </tarifa>
+</cjenik>
