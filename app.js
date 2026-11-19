@@ -268,7 +268,7 @@ function set(c,user){var d=D[c];cur=c;sel=null;document.documentElement.lang=c;d
     return '<article class="card" data-id="'+p.id+'" style="--c:'+EDGE[p.id]+';--f:'+FILL[p.id]+'">'+
     '<button class="card-h" aria-pressed="false"><span class="dot"></span><span class="ttl"><b>'+esc(p.name)+'</b><small>'+esc(p.btn)+'</small></span>'+
     (p.tk?'<span class="time" data-tk="'+p.tk+'"></span>':'')+'</button>'+(tags?'<div class="tags">'+tags+'</div>':'')+'<p>'+esc(p.text)+'</p></article>'}).join('');
-  renderFoot(d);renderExchange(d);renderWarn(d);renderDevices(d);renderGo(d);
+  renderFoot(d);$('rpBtn').textContent=RP.ui.btn[c];$('rpFab').href='report.html#'+c;renderExchange(d);renderWarn(d);renderDevices(d);renderGo(d);
   renderPrices();
   $('mPrice').textContent=d.pr.title;
   $('rate').textContent=d.rate;
