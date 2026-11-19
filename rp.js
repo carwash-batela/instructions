@@ -4,7 +4,7 @@ var L=['hr','en','de','pl','it','fr'];
 function T(s){var a=s.split('|'),o={};L.forEach(function(l,i){o[l]=a[i]});return o}
 window.RP={
  L:L,
- NTFY_TOPIC:'carwash-kvar-93e5c25bb8786340',
+ NTFY_TOPIC:window.LOC.ntfy,
  NOTIFY_EMAIL:'carwash.batela@gmail.com',
  ui:{
   btn:T('Prijavi kvar|Report a fault|Störung melden|Zgłoś awarię|Segnala guasto|Signaler une panne'),
@@ -98,7 +98,8 @@ window.RP={
   boxes:{tech:['swCoin','noCoin','err5','errC','btn'],mech:['hose','gun','noFoam','noWax','shake','weakP']},
   vacuum:['noCoin','weakS','clog','nozzle','hose'],
   cloths:['noCoin','noCloth','redLamp'],
-  other:['noCoin','noLiquid','hose']
+  other:['noCoin','noLiquid','hose'],
+  gloss:['noCoin','noLiquid','hose']
  }
 };
 })();

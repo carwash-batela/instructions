@@ -22,7 +22,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .mast h1{max-width:1220px;margin:0 auto 6px;font:700 clamp(2.2rem,7vw,3.8rem)/1.02 'Barlow Condensed',sans-serif}
 .hint{max-width:1220px;margin:0 auto;color:#ececec;font-size:1.2rem;font-weight:600}
 
-.stage{max-width:1240px;margin:-48px auto 0;padding:0 10px 56px;display:grid;gap:16px}
+.stage{max-width:1240px;margin:-48px auto 0;padding:0 10px 56px;display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
 .machine{margin:0;position:sticky;top:0;z-index:5;padding:8px 0;background:linear-gradient(var(--foam) 82%,transparent)}
 .frame{border-radius:var(--r);overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.28);background:#f7d42a}
 .frame svg{display:block;width:100%;height:auto}
@@ -50,7 +50,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .coins--d{display:none;margin-top:6px}
 
 .content{display:grid;gap:16px;align-content:start}
-.programs{display:grid;gap:14px}
+.programs{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 .card{background:#fff;border-radius:var(--r);box-shadow:0 1px 3px rgba(0,0,0,.16);scroll-margin-top:calc(var(--stick) + 12px);border:3px solid transparent;transition:border-color .2s,box-shadow .2s}
 .card.on{border-color:var(--c);box-shadow:0 6px 20px rgba(0,0,0,.22)}
 .card-h{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:none;border:0;padding:16px 16px 8px}
@@ -87,7 +87,7 @@ h2{margin:0 0 10px;font:700 1.95rem/1.1 'Barlow Condensed',sans-serif}
 #zbox svg{display:block;width:max(100%,1000px);margin:auto}
 #zoomClose{position:fixed;top:10px;right:10px;z-index:2;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:2rem;line-height:1}
 
-@media (max-width:420px){.logo img{height:36px}.menu a{padding:8px 11px;font-size:1rem}}
+@media (max-width:420px){.logo img{height:36px}.menu{gap:4px}.menu a{padding:8px 10px;font-size:.95rem}}
 @media (min-width:960px){
   .stage{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px;align-items:start;padding:0 20px 72px}
   .machine{top:16px;padding:0;background:none}
@@ -199,7 +199,7 @@ h2{margin:0 0 10px;font:700 1.95rem/1.1 'Barlow Condensed',sans-serif}
 .kr-types .k-glass{border-color:#1a73d9}.kr-types .k-cockpit{border-color:#f28200}.kr-types .k-leather{border-color:#8a5a2b}.kr-types .k-dry{border-color:#bbb}
 .kr-note{display:flex;gap:10px;align-items:center;margin:0;padding:10px 12px;background:#fff4e0;border:2px solid var(--sun);border-radius:10px;font-weight:700;font-size:1.15rem}
 .kr-note i{flex:none}
-@media (max-width:480px){.warn{grid-template-columns:1fr}.wn-svg{width:100%;max-width:220px;margin:0 auto}}
+@media (max-width:480px){.warn{grid-template-columns:minmax(0,1fr)}.warn>*{min-width:0}.wn-svg{width:100%;max-width:220px;margin:0 auto}}
 
 /* go2wash bubble */
 .go2{position:fixed;right:14px;bottom:14px;z-index:30;display:grid;justify-items:end;gap:10px}
@@ -312,3 +312,18 @@ h2{margin:0 0 10px;font:700 1.95rem/1.1 'Barlow Condensed',sans-serif}
 .rp-big svg .vc-hose{transform-origin:33px 12px}
 @keyframes vcs{50%{transform:rotate(2.2deg)}}
 @media (prefers-reduced-motion:reduce){.vc-lamp,.vc-hose{animation:none}}
+
+/* oznaka lokacije pokraj logotipa */
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.loc{font:800 1.9rem/1 'Barlow Condensed',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);border-left:5px solid var(--sun);padding:2px 0 2px 12px;white-space:nowrap}
+.loc[hidden]{display:none}
+@media (max-width:420px){.loc{font-size:1.15rem;padding-left:8px;border-left-width:4px;letter-spacing:.05em}.logo{gap:8px}.logo img{height:31px}}
+@media (min-width:960px){.loc{font-size:2.3rem}}
+.bar{flex-wrap:wrap;row-gap:8px}
+.menu{margin-left:auto}
+
+.dev-i .vc-hose{transform-origin:33px 12px}
+
+.mr{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 0;font-size:.95rem;color:var(--ink2)}
+.mr a{color:var(--ink2);font-weight:700;text-decoration:none;padding:6px 14px;border:2px solid var(--ink);border-radius:99px}
+.mr a:hover{background:var(--sun);border-color:var(--sun)}

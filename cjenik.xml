@@ -1,46 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cjenik datum="2026-09-10" jedinica="sekundi" pdv="25">
-  <kontakt email="carwash.batela@gmail.com"/>
-  <tarifa id="normalna" naziv="Normalna tarifa" od="08:00" do="21:30">
-    <grupa id="programi" naziv="Programi">
-      <stavka id="pranje" naziv="Pranje" sekundi="90"/>
-      <stavka id="ispiranje" naziv="Ispiranje" sekundi="96"/>
-      <stavka id="vosak-ceramic" naziv="Vosak / Ceramic" sekundi="85"/>
-      <stavka id="felge" naziv="Felge" sekundi="60"/>
-      <stavka id="cetke" naziv="Četke" sekundi="135"/>
-      <stavka id="aktivna-pjena" naziv="Aktivna pjena" sekundi="67"/>
-    </grupa>
-    <grupa id="usisavanje" naziv="Usisavanje">
-      <stavka id="usisavac" naziv="Usisavač" sekundi="200"/>
-    </grupa>
-    <grupa id="ostalo" naziv="Ostalo">
-      <stavka id="sjajilo" naziv="Sjajilo" sekundi="60"/>
-      <stavka id="miris" naziv="Miris" sekundi="45"/>
-    </grupa>
-    <grupa id="dubinsko" naziv="Dubinsko">
-      <stavka id="dubinsko-pranje" naziv="Dubinsko pranje" sekundi="65"/>
-      <stavka id="dubinsko-ispiranje" naziv="Dubinsko ispiranje" sekundi="115"/>
-    </grupa>
-  </tarifa>
-  <tarifa id="povlastena" naziv="Povlaštena tarifa" od="21:30" do="08:00">
-    <grupa id="programi" naziv="Programi">
-      <stavka id="pranje" naziv="Pranje" sekundi="105"/>
-      <stavka id="ispiranje" naziv="Ispiranje" sekundi="110"/>
-      <stavka id="vosak-ceramic" naziv="Vosak / Ceramic" sekundi="104"/>
-      <stavka id="felge" naziv="Felge" sekundi="70"/>
-      <stavka id="cetke" naziv="Četke" sekundi="135"/>
-      <stavka id="aktivna-pjena" naziv="Aktivna pjena" sekundi="70"/>
-    </grupa>
-    <grupa id="usisavanje" naziv="Usisavanje">
-      <stavka id="usisavac" naziv="Usisavač" sekundi="200"/>
-    </grupa>
-    <grupa id="ostalo" naziv="Ostalo">
-      <stavka id="sjajilo" naziv="Sjajilo" sekundi="60"/>
-      <stavka id="miris" naziv="Miris" sekundi="45"/>
-    </grupa>
-    <grupa id="dubinsko" naziv="Dubinsko">
-      <stavka id="dubinsko-pranje" naziv="Dubinsko pranje" sekundi="65"/>
-      <stavka id="dubinsko-ispiranje" naziv="Dubinsko ispiranje" sekundi="115"/>
-    </grupa>
-  </tarifa>
+<cjenik valuta="EUR" pdv="25" datum="2026-09-10" pdvUkljucen="da">
+  <trgovac naziv="BATELA za usluge d.o.o." oib="35501848273" mbs="060221110" email="carwash.batela@gmail.com" telefon="098 933 3722"/>
+  <poslovniProstor naziv="Car Wash SIROBUJA" adresa="Ul. Hrvatske Neovisnosti, 21000 Split"/>
+  <usluge>
+    <usluga id="pranje-normalna" grupa="Programi">
+      <naziv>Pranje (Normalna tarifa 08:00–21:30): 1,00 € = 90 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>90</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="ispiranje-normalna" grupa="Programi">
+      <naziv>Ispiranje (Normalna tarifa 08:00–21:30): 1,00 € = 96 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>96</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="vosak-ceramic-normalna" grupa="Programi">
+      <naziv>Vosak / Ceramic (Normalna tarifa 08:00–21:30): 1,00 € = 85 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>85</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="felge-normalna" grupa="Programi">
+      <naziv>Felge (Normalna tarifa 08:00–21:30): 1,00 € = 60 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>60</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="cetke-normalna" grupa="Programi">
+      <naziv>Četke (Normalna tarifa 08:00–21:30): 1,00 € = 135 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>135</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="aktivna-pjena-normalna" grupa="Programi">
+      <naziv>Aktivna pjena (Normalna tarifa 08:00–21:30): 1,00 € = 67 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>67</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="usisavac-normalna" grupa="Usisavanje">
+      <naziv>Usisavač (Normalna tarifa 08:00–21:30): 1,00 € = 200 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>200</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="sjajilo-normalna" grupa="Ostalo">
+      <naziv>Sjajilo (Normalna tarifa 08:00–21:30): 1,00 € = 60 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>60</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="miris-normalna" grupa="Ostalo">
+      <naziv>Miris (Normalna tarifa 08:00–21:30): 1,00 € = 45 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>45</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="dubinsko-pranje-normalna" grupa="Dubinsko">
+      <naziv>Dubinsko pranje (Normalna tarifa 08:00–21:30): 1,00 € = 65 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>65</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="dubinsko-ispiranje-normalna" grupa="Dubinsko">
+      <naziv>Dubinsko ispiranje (Normalna tarifa 08:00–21:30): 1,00 € = 115 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>115</trajanjeSekundi>
+      <tarifa id="normalna" od="08:00" do="21:30"/>
+    </usluga>
+    <usluga id="pranje-povlastena" grupa="Programi">
+      <naziv>Pranje (Povlaštena tarifa 21:30–08:00): 1,00 € = 105 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>105</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="ispiranje-povlastena" grupa="Programi">
+      <naziv>Ispiranje (Povlaštena tarifa 21:30–08:00): 1,00 € = 110 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>110</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="vosak-ceramic-povlastena" grupa="Programi">
+      <naziv>Vosak / Ceramic (Povlaštena tarifa 21:30–08:00): 1,00 € = 104 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>104</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="felge-povlastena" grupa="Programi">
+      <naziv>Felge (Povlaštena tarifa 21:30–08:00): 1,00 € = 70 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>70</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="cetke-povlastena" grupa="Programi">
+      <naziv>Četke (Povlaštena tarifa 21:30–08:00): 1,00 € = 135 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>135</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="aktivna-pjena-povlastena" grupa="Programi">
+      <naziv>Aktivna pjena (Povlaštena tarifa 21:30–08:00): 1,00 € = 70 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>70</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="usisavac-povlastena" grupa="Usisavanje">
+      <naziv>Usisavač (Povlaštena tarifa 21:30–08:00): 1,00 € = 200 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>200</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="sjajilo-povlastena" grupa="Ostalo">
+      <naziv>Sjajilo (Povlaštena tarifa 21:30–08:00): 1,00 € = 60 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>60</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="miris-povlastena" grupa="Ostalo">
+      <naziv>Miris (Povlaštena tarifa 21:30–08:00): 1,00 € = 45 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>45</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="dubinsko-pranje-povlastena" grupa="Dubinsko">
+      <naziv>Dubinsko pranje (Povlaštena tarifa 21:30–08:00): 1,00 € = 65 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>65</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="dubinsko-ispiranje-povlastena" grupa="Dubinsko">
+      <naziv>Dubinsko ispiranje (Povlaštena tarifa 21:30–08:00): 1,00 € = 115 s</naziv>
+      <maloprodajnaCijena>1,00</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>1,00</baznaCijena>
+      <trajanjeSekundi>115</trajanjeSekundi>
+      <tarifa id="povlastena" od="21:30" do="08:00"/>
+    </usluga>
+    <usluga id="jednokratne-krpe" grupa="Ostalo">
+      <naziv>Jednokratne krpe (1 krpa, automat ne vraća višak)</naziv>
+      <maloprodajnaCijena>0,70</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>0,70</baznaCijena>
+    </usluga>
+    <usluga id="cistac-tepiha" grupa="Ostalo">
+      <naziv>Čistač tepiha (minimalni iznos za pokretanje)</naziv>
+      <maloprodajnaCijena>0,50</maloprodajnaCijena>
+      <posebanOblikProdaje></posebanOblikProdaje>
+      <baznaCijena>0,50</baznaCijena>
+    </usluga>
+  </usluge>
 </cjenik>

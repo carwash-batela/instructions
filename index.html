@@ -8,13 +8,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,800&family=Barlow:wght@500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="alternate" type="text/csv" href="cjenik.csv" title="Cjenik (CSV)">
+<link rel="alternate" type="application/xml" href="cjenik.xml" title="Cjenik (XML)">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="top">
   <div class="bar">
-    <a class="logo" href="#"><img src="assets/carwash-logo.png" alt="Carwash" width="833" height="128"></a>
-    <nav class="menu"><a id="mPrice" href="#prices"></a><a id="mXml" download="cjenik.xml">XML</a></nav>
+    <a class="logo" href="#"><img src="assets/carwash-logo.png" alt="Carwash" width="833" height="128"><span class="loc" id="locTag" hidden></span></a>
+    <nav class="menu"><a id="mPrice" href="#prices"></a></nav>
   </div>
 </header>
 <section class="mast">
@@ -46,6 +48,7 @@
 <span id="credit" class="sr" aria-live="polite"></span>
 
 <dialog id="zoom" class="zoom"><button id="zoomClose" aria-label="Close">&times;</button><div class="zscroll"><div id="zbox"></div></div></dialog>
+<script src="config.js"></script>
 <script src="data.js"></script>
 <script src="rp.js"></script>
 <script src="app.js"></script>

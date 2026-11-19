@@ -1,5 +1,5 @@
 (function(){
-var R=window.RP,L=R.L,names={hr:'Hrvatski',en:'English',de:'Deutsch',pl:'Polski',it:'Italiano',fr:'Français'};
+var R=window.RP,LOC=window.LOC,L=R.L,names={hr:'Hrvatski',en:'English',de:'Deutsch',pl:'Polski',it:'Italiano',fr:'Français'};
 var $=function(i){return document.getElementById(i)},cur='hr',S={locked:false,step:'dev',dev:null,sub:null,box:null,vac:'',prob:'',note:'',busy:false,err:'',zone:null,fromMap:false},t0=Date.now();
 function store(k,v){try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){}}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -17,6 +17,7 @@ var ICON={
  changer:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="6" width="32" height="36" rx="5" fill="#4a4a4a"/><rect x="13" y="11" width="22" height="9" fill="#b80000"/><rect x="13" y="25" width="22" height="4" rx="2" fill="#111"/><circle cx="24" cy="36" r="3.5" fill="#f28200"/></svg>',
  boxes:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="42.5" width="28" height="3.5" rx="1" fill="#8c8a84"/><rect x="17" y="22" width="14" height="21" fill="#aaa69d"/><rect x="17" y="22" width="4" height="21" fill="#8f8b83"/><path d="M31 38c6-1 9-6 9-12" fill="none" stroke="#9aa0a6" stroke-width="2" stroke-linecap="round"/><rect x="6" y="6" width="36" height="17" rx="1.5" fill="#e6c75e" stroke="#b39a30" stroke-width="1.2"/><rect x="6" y="6" width="4.5" height="17" rx="1.5" fill="#2b2f3a"/><circle class="vc-lamp" cx="16" cy="12" r="2" fill="#e5171a"/><rect x="22" y="10.5" width="13" height="2" fill="#5b4a14" opacity=".8"/><rect x="22" y="15" width="13" height="2" fill="#5b4a14" opacity=".8"/><rect x="26" y="19" width="6" height="1.6" fill="#2b2f3a"/></svg>',
  vacuum:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="2" width="24" height="44" rx="2.5" fill="#aeb2b7"/><rect x="8" y="6" width="18" height="37" fill="#dba51f"/><path d="M8 6h18v6C20 10 13 11 8 15z" fill="#efc24d" opacity=".55"/><rect x="10" y="9" width="5.5" height="10" rx="1" fill="#f7f4e2"/><rect x="12" y="11" width="1.6" height="4" fill="#333"/><rect x="17" y="14.5" width="7" height="3.4" fill="#e0456d" stroke="#d8d8d8" stroke-width=".8"/><circle class="vc-lamp" cx="21" cy="10" r="1.9" fill="#e5171a"/><path d="M12 40l1.6-6c2-5.5 7-9.5 12-12" fill="none" stroke="#1d1d1d" stroke-width="3.2" stroke-linecap="round"/><path d="M10.5 41.5l3-6.5 3 1.5-2.2 6z" fill="#111"/><rect x="31" y="3" width="2" height="41" fill="#b9bcc2"/><g class="vc-hose"><path d="M33 12c8-1 12 7 8 14-2.5 4.5-6.5 4-5 10 1 4 5 5 3 9" fill="none" stroke="#1f9bb3" stroke-width="3.8" stroke-linecap="round"/><path d="M33 12c8-1 12 7 8 14-2.5 4.5-6.5 4-5 10 1 4 5 5 3 9" fill="none" stroke="#0f6f84" stroke-width="3.8" stroke-linecap="round" stroke-dasharray="1 2.2" opacity=".55"/></g></svg>',
+ gloss:'<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="26" r="18" fill="#2b2b2b"/><circle cx="22" cy="26" r="11" fill="#cfd3d6"/><circle cx="22" cy="26" r="4" fill="#8f969b"/><path d="M22 15v22M11 26h22M14.2 18.2l15.6 15.6M29.8 18.2L14.2 33.8" stroke="#9aa0a6" stroke-width="2"/><path class="vc-lamp" d="M38 4l1.8 4.6 4.6 1.8-4.6 1.8L38 16.8l-1.8-4.6-4.6-1.8 4.6-1.8z" fill="#f28200"/></svg>',
  cloths:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="12" width="32" height="24" rx="3" fill="#f1efe9" stroke="#4a4a4a" stroke-width="3"/><path d="M14 20h20M14 26h20M14 32h14" stroke="#bdb9ac" stroke-width="2.5"/></svg>',
  other:'<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="12" cy="24" r="4.5" fill="#4a4a4a"/><circle cx="24" cy="24" r="4.5" fill="#f28200"/><circle cx="36" cy="24" r="4.5" fill="#4a4a4a"/></svg>'};
 
@@ -68,28 +69,32 @@ function vacArt(){var n=S.vac?S.vac:'?',hp='M168 76C206 70 216 106 198 128C187 1
  '<g class="vc-hose"><path d="'+hp+'" fill="none" stroke="#1f9bb3" stroke-width="10" stroke-linecap="round"/><path d="'+hp+'" fill="none" stroke="#0f6f84" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 5" opacity=".55"/></g></g>'+
  '<rect x="204" y="6" width="90" height="30" rx="6" fill="#f28200" stroke="#303030" stroke-width="2"/><text x="249" y="27" text-anchor="middle" font-family="Montserrat,Barlow,sans-serif" font-weight="900" font-size="14" fill="#303030" textLength="72" lengthAdjust="spacingAndGlyphs">USISAVAČ '+n+'</text>'+
  '</g></svg>'}
+function has(d){return LOC.reportDevs.indexOf(d)>-1}
+function nums(n){var a=[];for(var i=1;i<=n;i++)a.push(i);return a}
+function numStyle(n){return n<5?' style="grid-template-columns:repeat('+n+',1fr)"':''}
 function preset(){var m=/[?&]d=([a-z0-9]+)/.exec(location.search);if(!m)return;var k=m[1],x;
- if(k==='changer'||k==='cloths'){S.dev=k}
- else if(x=/^box([1-9])$/.exec(k)){S.dev='boxes';S.box=x[1]}
- else if(x=/^vac(10|[1-9])$/.exec(k)){S.dev='vacuum';S.vac=x[1]}
- else if(k==='gloss'||k==='scent'||k==='carpet'||k==='deep'){S.dev='other';S.sub=k}
+ if(k==='changer'||(k==='cloths'&&has('cloths'))){S.dev=k}
+ else if((x=/^box([1-9])$/.exec(k))&&+x[1]<=LOC.boxes){S.dev='boxes';S.box=x[1]}
+ else if((x=/^vac(10|[1-9])$/.exec(k))&&+x[1]<=LOC.vacs){S.dev='vacuum';S.vac=x[1]}
+ else if(k==='gloss'&&!has('other')){S.dev='gloss'}
+ else if(has('other')&&(k==='gloss'||k==='scent'||k==='carpet'||k==='deep')){S.dev='other';S.sub=k}
  else return;S.locked=true;S.step='form'}
-function head(){$('title').textContent=u('title');$('hint').textContent=u('sub');$('homeLink').textContent=u('home');document.title=u('title')+' | Car Wash';document.documentElement.lang=cur;
+function head(){$('title').textContent=u('title');$('hint').textContent=u('sub');$('homeLink').textContent=u('home');document.title=u('title')+' | Car Wash'+(LOC.name?' '+LOC.name:'');var lt=$('locTag');if(lt){lt.textContent=LOC.name||'';lt.hidden=!LOC.name};document.documentElement.lang=cur;
   [].forEach.call($('langs').children,function(b){b.setAttribute('aria-pressed',b.dataset.l===cur)});
   $('homeLink').href=$('homeLogo').href='index.html#'+cur}
 function render(keep){head();var h='';
  if(S.step==='dev'){
-  h='<h2>'+esc(u('q1'))+'</h2><div class="rp-grid">'+['changer','boxes','vacuum','cloths','other'].map(function(k){return '<button class="rp-big" data-dev="'+k+'">'+ICON[k]+'<span>'+esc(lab('dev',k))+'</span></button>'}).join('')+'</div>'+
-   '<div class="rp-or"><span>'+esc(u('mapOr'))+'</span></div><button class="rp-mapbtn" data-act="map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7z" fill="#d10000"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>'+esc(u('mapBtn'))+'</span></button>'}
- else if(S.step==='map'){
+  h='<h2>'+esc(u('q1'))+'</h2><div class="rp-grid">'+LOC.reportDevs.map(function(k){return '<button class="rp-big" data-dev="'+k+'">'+ICON[k]+'<span>'+esc(lab('dev',k))+'</span></button>'}).join('')+'</div>'+(LOC.map?
+   '<div class="rp-or"><span>'+esc(u('mapOr'))+'</span></div><button class="rp-mapbtn" data-act="map"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7z" fill="#d10000"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span>'+esc(u('mapBtn'))+'</span></button>':'')}
+ else if(S.step==='map'&&LOC.map){
   h='<h2>'+esc(u('mapTitle'))+'</h2>'+mapSVG()+zonePanel()+'<button class="rp-back" data-act="list">'+esc(u('mapList'))+'</button>'}
  else if(S.step==='form'){
   h='<div class="rp-top"><span class="rp-chip">'+ICON[S.dev]+esc(S.locked?devLabel():lab('dev',S.dev))+'</span><button class="rp-link" data-act="change">'+esc(u('change'))+'</button></div>';
   if(S.dev==='other'&&!S.locked){h+='<h2>'+esc(u('which'))+'</h2><div class="rp-sub">'+['gloss','scent','carpet','deep'].map(function(k){return '<button class="rp-opt" data-sub="'+k+'" aria-pressed="'+(S.sub===k)+'">'+esc(lab('dev',k))+'</button>'}).join('')+'</div>'}
   if(S.dev==='boxes'){h+=boxArt()}
   if(S.dev==='vacuum'){h+=vacArt()}
-  if(S.dev==='boxes'&&!S.locked){h+='<h2>'+esc(u('boxNo'))+'</h2><div class="rp-nums">'+[1,2,3,4,5,6,7,8,9].map(function(n){return '<button class="rp-num" data-box="'+n+'" aria-pressed="'+(S.box==n)+'">'+n+'</button>'}).join('')+'</div>'}
-  if(S.dev==='vacuum'&&!S.locked){h+='<h2>'+esc(u('vacNo'))+'</h2><div class="rp-nums">'+[1,2,3,4,5,6,7,8,9,10].map(function(n){return '<button class="rp-num" data-vac="'+n+'" aria-pressed="'+(S.vac==n)+'">'+n+'</button>'}).join('')+'</div>'}
+  if(S.dev==='boxes'&&!S.locked){h+='<h2>'+esc(u('boxNo'))+'</h2><div class="rp-nums"'+numStyle(LOC.boxes)+'>'+nums(LOC.boxes).map(function(n){return '<button class="rp-num" data-box="'+n+'" aria-pressed="'+(S.box==n)+'">'+n+'</button>'}).join('')+'</div>'}
+  if(S.dev==='vacuum'&&!S.locked){h+='<h2>'+esc(u('vacNo'))+'</h2><div class="rp-nums"'+numStyle(LOC.vacs)+'>'+nums(LOC.vacs).map(function(n){return '<button class="rp-num" data-vac="'+n+'" aria-pressed="'+(S.vac==n)+'">'+n+'</button>'}).join('')+'</div>'}
   var dk=devKey(),opts='';
   if(S.dev!=='other'||S.sub){
    var P=R.probs[S.dev==='other'?'other':S.dev],opt=function(k){return '<option value="'+k+'"'+(S.prob===k?' selected':'')+'>'+esc(lab('p',k))+'</option>'};
@@ -106,11 +111,11 @@ function render(keep){head();var h='';
  $('rp').innerHTML=h;if(S.step==='map')fitPills();if(S.step!=='dev'&&!keep)window.scrollTo({top:0})}
 function send(){
  var last=+store('rpLast')||0;if(Date.now()-last<60000){S.err=u('wait');render();return}
- var hr='hr',msg='Uređaj: '+devLabel(hr)+'\nProblem: '+lab('p',S.prob,hr)+(S.note?'\nNapomena: '+S.note:'')+'\nJezik prijavitelja: '+cur+'\nVrijeme: '+new Date().toLocaleString('hr-HR',{timeZone:'Europe/Zagreb'});
+ var hr='hr',msg=(LOC.name?'Lokacija: '+LOC.name+'\n':'')+'Uređaj: '+devLabel(hr)+'\nProblem: '+lab('p',S.prob,hr)+(S.note?'\nNapomena: '+S.note:'')+'\nJezik prijavitelja: '+cur+'\nVrijeme: '+new Date().toLocaleString('hr-HR',{timeZone:'Europe/Zagreb'});
  S.busy=true;S.err='';render();
  var done=function(ok){S.busy=false;if(ok){store('rpLast',Date.now());S.step='sent'}else S.err=u('err')+(S.errCode||'');render()};
  if(location.hash==='#test'||location.search==='?test'){setTimeout(function(){done(true)},600);return}
- var base={topic:R.NTFY_TOPIC,title:'KVAR: '+devLabel(hr),message:msg,priority:4,tags:['rotating_light']},
+ var base={topic:R.NTFY_TOPIC,title:'KVAR'+(LOC.name?' '+LOC.name:'')+': '+devLabel(hr),message:msg,priority:4,tags:['rotating_light']},
   withMail=JSON.stringify(Object.assign({email:R.NOTIFY_EMAIL},base)),pushOnly=JSON.stringify(base),code='';
  function post(b,o){var ctl=window.AbortController?new AbortController():null,to=setTimeout(function(){ctl&&ctl.abort()},12000);
   return fetch('https://ntfy.sh',Object.assign({method:'POST',body:b,signal:ctl?ctl.signal:undefined},o||{})).then(function(r){clearTimeout(to);return r},function(x){clearTimeout(to);throw x})}

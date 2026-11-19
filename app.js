@@ -7,6 +7,9 @@ var reduce=function(){return matchMedia('(prefers-reduced-motion:reduce)').match
 var order=['hr','en','de','pl','it','fr'];
 var DQ=(function(){var m=/[?&]d=(changer|cloths|gloss|scent|carpet|deep|box[1-9]|vac10|vac[1-9])(?:&|$)/.exec(location.search);return m?m[1]:''})();
 var eur=function(c){return (c/100).toFixed(2).replace('.',',')};
+var LOC=window.LOC||{id:'main',name:'',panel:'main',programs:null,devices:['vac','gloss','scent','deep','cloths','carpet'],patch:null};
+if(LOC.patch)LOC.patch(D,TF);
+if(LOC.programs)Object.keys(D).forEach(function(l){D[l].programs=D[l].programs.filter(function(p){return LOC.programs.indexOf(p.id)>-1})});
 
 /* ---------- 7-segment display ---------- */
 function hor(y,x0,x1){return [[x0,y],[x0+3.5,y-3.5],[x1-3.5,y-3.5],[x1,y],[x1-3.5,y+3.5],[x0+3.5,y+3.5]].join(' ')}
@@ -42,6 +45,7 @@ function btn(id,cx,cy,ring,face,label){
    '<circle class="face" cx="'+cx+'" cy="'+cy+'" r="'+face+'" fill="'+FILL[id]+'" stroke="rgba(0,0,0,.35)" stroke-width="2"/>'+
    '<circle cx="'+cx+'" cy="'+cy+'" r="'+face+'" fill="url(#gloss)"/></g>'}
 function machine(d){
+  if(LOC.panel==='brda')return machineBrda(d);
   var m=d.m,P=d.programs,lab=function(id){var p=P.filter(function(x){return x.id===id})[0];return p.name+' – '+p.btn};
   var s='<svg viewBox="0 0 1280 860" role="img" aria-label="'+esc(d.alt)+'" xmlns="http://www.w3.org/2000/svg">'+
   '<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4b617"/><stop offset=".5" stop-color="#f7d42a"/><stop offset="1" stop-color="#f9e440"/></linearGradient>'+
@@ -100,6 +104,36 @@ function machine(d){
   s+='<image href="assets/lavateh.png" x="60" y="772" width="230" height="52"/></svg>';
   return s}
 
+/* ---------- panel lokacije BRDA (slika vrata bez aktivne pjene + tipke) ---------- */
+function machineBrda(d){
+  var P=d.programs,lab=function(id){var p=P.filter(function(x){return x.id===id})[0];return p.name+' – '+p.btn};
+  var s='<svg viewBox="0 0 1180 954" role="img" aria-label="'+esc(d.alt)+'" xmlns="http://www.w3.org/2000/svg">'+
+  '<defs><linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d4d8db"/><stop offset="1" stop-color="#8f969b"/></linearGradient>'+
+  '<radialGradient id="gloss" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></radialGradient>'+
+  '<linearGradient id="slit" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#bdbdbd"/><stop offset="1" stop-color="#6f6f6f"/></linearGradient>'+
+  '<clipPath id="plate"><rect width="1180" height="954" rx="24"/></clipPath></defs>'+
+  '<g clip-path="url(#plate)"><image href="assets/panel-brda.webp" width="1180" height="954"/></g>'+
+  '<rect x="1.5" y="1.5" width="1177" height="951" rx="23" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="3"/>';
+  /* vrijednosti novca + otvor */
+  var coins=[['0,10 €',10],['0,20 €',20],['0,50 €',50],['1,00 €',100],['2,00 €',200],[d.token,100]];
+  coins.forEach(function(c,i){s+=txt(c[0],228,203+i*23,20,{anchor:'end',fit:128,extra:' data-coin="'+c[1]+'"',cls:'coinv'})});
+  s+='<rect x="241" y="159" width="110" height="182" rx="16" fill="#353535"/>'+
+     '<rect x="285" y="187" width="22" height="74" rx="5" fill="url(#slit)" transform="rotate(12 296 224)"/>'+
+     '<rect x="268" y="298" width="56" height="26" rx="6" fill="#4472c4"/>';
+  /* zaslon (7 segmenata) */
+  var sc=227/280;
+  s+='<g transform="translate('+(455-440*sc).toFixed(2)+' '+(158+(77-92*sc)/2-172*sc).toFixed(2)+') scale('+sc.toFixed(4)+')">'+
+     '<rect x="440" y="172" width="280" height="92" fill="#b80000" stroke="#161616" stroke-width="3"/>';
+  for(var i=1;i<4;i++)s+='<line x1="'+(440+i*70)+'" y1="172" x2="'+(440+i*70)+'" y2="264" stroke="#3b0000" stroke-width="3"/>';
+  for(i=0;i<4;i++)s+=digitSVG(i);
+  s+='<circle class="seg on" cx="571" cy="247" r="4.5"/></g>';
+  /* nazivi programa (veći i podebljani) */
+  s+=txt(d.m.wash,548,430.5,40,{fit:246,extra:' fill="#fff" dominant-baseline="central"',cls:'wh heavy'})+txt(d.m.rinse,548,739.5,40,{fit:246,extra:' fill="#fff" dominant-baseline="central"',cls:'wh heavy'});
+  /* tipke */
+  s+=btn('rim',838,196,43,33,lab('rim'))+btn('stop',1033,196,43,33,lab('stop'))+
+     btn('wash',837.5,429,33,25,lab('wash'))+btn('wax',568,583.5,33,25,lab('wax'))+btn('rinse',837.5,738,33,25,lab('rinse'));
+  return s+'</svg>'}
+
 function fit(root){[].forEach.call(root.querySelectorAll('[data-fit]'),function(t){
   var b=+t.dataset.fs;t.setAttribute('font-size',b);var w=t.getComputedTextLength?t.getComputedTextLength():0,mx=+t.dataset.fit;
   if(w>mx)t.setAttribute('font-size',(b*mx/w).toFixed(1))})}
@@ -113,14 +147,10 @@ function renderPrices(){var d=D[cur],pr=d.pr,k=tariffKey(),t=TF[k];
   var h='<h2>'+esc(pr.title)+'</h2><p class="asof">'+esc(pr.asof)+'</p><div class="tarhead"><b>'+esc(pr[k])+'</b><span>'+hm(t.from)+' – '+hm(t.to)+'</span><em>'+esc(pr.now)+'</em></div>';
   TF.order.forEach(function(g){h+='<h3>'+esc(pr.groups[g[0]])+'</h3><ul class="prow">'+g[1].map(function(i){return '<li><span>'+esc(pr.items[i])+'</span><span><b>'+t.s[i]+'</b> '+esc(pr.sec)+'</span></li>'}).join('')+'</ul>'});
   h+='<p class="vat">'+esc(pr.vat)+'<br>'+esc(pr.complaint)+' <a href="mailto:'+TF.email+'">'+TF.email+'</a></p>';
+  var ml={hr:'Strojno čitljiv cjenik (preuzimanje):',en:'Machine-readable price list (download):',de:'Maschinenlesbare Preisliste (Download):',pl:'Cennik do odczytu maszynowego (pobierz):',it:'Listino leggibile da macchina (scarica):',fr:'Tarifs lisibles par machine (télécharger) :'};
+  h+='<p class="mr"><span>'+esc(ml[cur]||ml.en)+'</span><a href="cjenik.xml" download>XML</a><a href="cjenik.csv" download>CSV</a></p>';
   $('prices').innerHTML=h;
   [].forEach.call(document.querySelectorAll('.time[data-tk]'),function(e){e.textContent='1 € = '+e.dataset.tk.split(',').map(function(k){return t.s[k]}).join(' / ')+' s'})}
-function xml(){var hr=D.hr.pr,x='<?xml version="1.0" encoding="UTF-8"?>\n<cjenik datum="'+TF.date+'" jedinica="sekundi" pdv="'+TF.vat+'">\n  <kontakt email="'+TF.email+'"/>\n';
-  ['normal','reduced'].forEach(function(k){var t=TF[k];x+='  <tarifa id="'+t.id+'" naziv="'+esc(hr[k])+'" od="'+('0'+Math.floor(t.from/60)).slice(-2)+':'+('0'+t.from%60).slice(-2)+'" do="'+('0'+Math.floor(t.to/60)).slice(-2)+':'+('0'+t.to%60).slice(-2)+'">\n';
-    TF.order.forEach(function(g){x+='    <grupa id="'+TF.gid[g[0]]+'" naziv="'+esc(hr.groups[g[0]])+'">\n';
-      g[1].forEach(function(i){x+='      <stavka id="'+TF.xid[i]+'" naziv="'+esc(hr.items[i])+'" sekundi="'+t.s[i]+'"/>\n'});x+='    </grupa>\n'});x+='  </tarifa>\n'});
-  return x+'</cjenik>\n'}
-
 /* ---------- water / foam transition (mobile) ---------- */
 var FX={
  rinse:{c:'30,150,240',a:.62,dur:1500,n:34,streak:1},
@@ -159,7 +189,7 @@ var IC={
  bill:'<svg viewBox="0 0 64 40" width="52" height="32" aria-hidden="true"><rect x="2" y="2" width="60" height="36" rx="5" fill="#e6efd9" stroke="#4a4a4a" stroke-width="3"/><circle cx="32" cy="20" r="9" fill="none" stroke="#4a4a4a" stroke-width="3"/><circle cx="11" cy="20" r="3" fill="#4a4a4a"/><circle cx="53" cy="20" r="3" fill="#4a4a4a"/></svg>',
  card:'<svg viewBox="0 0 64 42" width="52" height="34" aria-hidden="true"><rect x="2" y="2" width="60" height="38" rx="6" fill="#4a4a4a"/><rect x="2" y="11" width="60" height="8" fill="#f28200"/><rect x="9" y="27" width="22" height="5" rx="2" fill="#fff"/></svg>',
  token:'<svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#2f6fdd" stroke="#1d4fa8" stroke-width="2"/><circle cx="16" cy="16" r="9.5" fill="none" stroke="#7fa8f0" stroke-width="1.6"/><ellipse cx="11" cy="9.5" rx="4.5" ry="2.4" fill="#fff" opacity=".55" transform="rotate(-30 11 9.5)"/></svg>',
- vac:'<svg viewBox="0 0 48 48" width="46" height="46" aria-hidden="true"><path d="M12 8h10v22a8 8 0 1 0 8 8h-4a4 4 0 1 1-4-4V8" fill="none" stroke="#4a4a4a" stroke-width="3.5" stroke-linejoin="round"/><rect x="26" y="34" width="16" height="9" rx="3" fill="#f28200"/></svg>',
+ vac:'<svg viewBox="0 0 48 48" width="68" height="68" aria-hidden="true"><rect x="5" y="2" width="24" height="44" rx="2.5" fill="#aeb2b7"/><rect x="8" y="6" width="18" height="37" fill="#dba51f"/><path d="M8 6h18v6C20 10 13 11 8 15z" fill="#efc24d" opacity=".55"/><rect x="10" y="9" width="5.5" height="10" rx="1" fill="#f7f4e2"/><rect x="12" y="11" width="1.6" height="4" fill="#333"/><rect x="17" y="14.5" width="7" height="3.4" fill="#e0456d" stroke="#d8d8d8" stroke-width=".8"/><circle class="vc-lamp" cx="21" cy="10" r="1.9" fill="#e5171a"/><path d="M12 40l1.6-6c2-5.5 7-9.5 12-12" fill="none" stroke="#1d1d1d" stroke-width="3.2" stroke-linecap="round"/><path d="M10.5 41.5l3-6.5 3 1.5-2.2 6z" fill="#111"/><rect x="31" y="3" width="2" height="41" fill="#b9bcc2"/><g class="vc-hose"><path d="M33 12c8-1 12 7 8 14-2.5 4.5-6.5 4-5 10 1 4 5 5 3 9" fill="none" stroke="#1f9bb3" stroke-width="3.8" stroke-linecap="round"/><path d="M33 12c8-1 12 7 8 14-2.5 4.5-6.5 4-5 10 1 4 5 5 3 9" fill="none" stroke="#0f6f84" stroke-width="3.8" stroke-linecap="round" stroke-dasharray="1 2.2" opacity=".55"/></g></svg>',
  scent:'<svg viewBox="0 0 48 48" width="46" height="46" aria-hidden="true"><path d="M24 4l11 17h-6l9 13H10l9-13h-6z" fill="#3c9a53" stroke="#2c6f3c" stroke-width="2.5" stroke-linejoin="round"/><rect x="21.5" y="34" width="5" height="8" fill="#8a5a2b"/><circle cx="24" cy="2" r="0" /></svg>',
  deep:'<svg viewBox="0 0 48 48" width="46" height="46" aria-hidden="true"><path d="M24 5c7 9 12 15 12 22a12 12 0 0 1-24 0c0-7 5-13 12-22z" fill="#3aa0f0" stroke="#1d6fb5" stroke-width="2.5"/><path d="M38 6l1.6 4 4 1.6-4 1.6L38 17l-1.6-3.8-4-1.6 4-1.6z" fill="#f28200"/></svg>'};
 function renderExchange(d){var e=d.ex;
@@ -227,17 +257,17 @@ function renderWarn(d){var w=d.wn;
 '<g class="wn-drops"><path class="wn-drop" style="animation-delay:0s" d="M16 86c2 3 3 4 3 6a3 3 0 0 1-6 0c0-2 1-3 3-6z" fill="#3aa0f0"/><path class="wn-drop" style="animation-delay:.25s" d="M24 92c2 3 3 4 3 6a3 3 0 0 1-6 0c0-2 1-3 3-6z" fill="#3aa0f0"/><path class="wn-drop" style="animation-delay:.5s" d="M8 90c2 3 3 4 3 6a3 3 0 0 1-6 0c0-2 1-3 3-6z" fill="#3aa0f0"/></g>'+
   '<g class="wn-finger"><rect x="168" y="100" width="12" height="30" rx="6" fill="#f1c9a0" stroke="#c4966a" stroke-width="2"/></g></svg>'+
   '<div class="wn-t"><span class="wn-i" aria-hidden="true">!</span><h2>'+esc(w.t)+'</h2><p>'+esc(w.x)+'</p></div>'}
-function renderDevices(d){var v=d.dv,c=d.cp,k=d.kr;
+function renderDevices(d){var v=d.dv,c=d.cp,k=d.kr,has=function(x){return LOC.devices.indexOf(x)>-1};
   function dev(id,ico,tk){var x=v[id];return '<article class="dev"><div class="dev-i">'+ico+'</div><div class="dev-b"><h3>'+esc(x[0])+'</h3><p>'+esc(x[1])+'</p><span class="time" data-tk="'+tk+'"></span></div></article>'}
   var li=function(kk,x){return '<li class="k-'+kk+'"><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></li>'};
   function dots(id,n,p){var o='';for(var i=0;i<n;i++)o+='<button data-n="'+i+'" aria-pressed="false" aria-label="'+esc(p)+' '+(i+1)+'">'+(i+1)+'</button>';return '<div class="cp-dots" data-demo="'+id+'">'+o+'</div>'}
   var kt=['glass','cockpit','leather','dry'].map(function(t,i){return '<li class="k-'+t+'">'+esc(k.types[i])+'</li>'}).join('');
-  $('devices').innerHTML='<h2>'+esc(v.t)+'</h2><div class="devgrid">'+dev('vac',IC.vac,'vac')+
-   dev('gloss','<img src="assets/tire-gloss.webp" alt="" width="72" height="72">','gloss')+dev('scent',IC.scent,'scent')+dev('deep',IC.deep,'deepwash,deeprinse')+
-   '<article class="dev dev--wide"><div class="cp"><div class="cp-demo">'+clothSVG(k.t)+'<p class="cp-cap" id="krCap"></p>'+dots('kr',3,k.play)+'</div>'+
-   '<div class="cp-list"><h3>'+esc(k.t)+'</h3><span class="pricepill">'+esc(k.price)+'</span><p class="kr-s">'+esc(k.s)+'</p><ul class="kr-types">'+kt+'</ul><p class="kr-note"><i aria-hidden="true">!</i>'+esc(k.note)+'</p></div></div></article>'+
-   '<article class="dev dev--wide"><div class="cp"><div class="cp-demo">'+carpetSVG(c.t,c.t)+'<p class="cp-cap" id="cpCap"></p>'+dots('cp',4,c.play)+'</div>'+
-   '<div class="cp-list"><h3>'+esc(c.t)+'</h3><ul>'+li('coins',c.coins)+li('min',c.min)+li('modes',c.modes)+li('wet',c.wet)+li('stop',c.stop)+li('q',c.q)+'</ul><p class="thx">'+esc(c.thx)+'</p></div></div></article></div>';
+  $('devices').innerHTML='<h2>'+esc(v.t)+'</h2><div class="devgrid">'+(has('vac')?dev('vac',IC.vac,'vac'):'')+
+   (has('gloss')?dev('gloss','<img src="assets/tire-gloss.webp" alt="" width="72" height="72">','gloss'):'')+(has('scent')?dev('scent',IC.scent,'scent'):'')+(has('deep')?dev('deep',IC.deep,'deepwash,deeprinse'):'')+
+   (has('cloths')?'<article class="dev dev--wide"><div class="cp"><div class="cp-demo">'+clothSVG(k.t)+'<p class="cp-cap" id="krCap"></p>'+dots('kr',3,k.play)+'</div>'+
+   '<div class="cp-list"><h3>'+esc(k.t)+'</h3><span class="pricepill">'+esc(k.price)+'</span><p class="kr-s">'+esc(k.s)+'</p><ul class="kr-types">'+kt+'</ul><p class="kr-note"><i aria-hidden="true">!</i>'+esc(k.note)+'</p></div></div></article>':'')+
+   (has('carpet')?'<article class="dev dev--wide"><div class="cp"><div class="cp-demo">'+carpetSVG(c.t,c.t)+'<p class="cp-cap" id="cpCap"></p>'+dots('cp',4,c.play)+'</div>'+
+   '<div class="cp-list"><h3>'+esc(c.t)+'</h3><ul>'+li('coins',c.coins)+li('min',c.min)+li('modes',c.modes)+li('wet',c.wet)+li('stop',c.stop)+li('q',c.q)+'</ul><p class="thx">'+esc(c.thx)+'</p></div></div></article>':'')+'</div>';
   fit($('devices'));dmGo('cp',dmI.cp);dmGo('kr',dmI.kr);dmAuto('cp');dmAuto('kr')}
 function renderGo(d){var g=d.go,o=$('go2').classList.contains('open');
   $('go2').innerHTML='<div class="go2-p" id="go2p"'+(o?'':' hidden')+'><div class="go2-h"><b>go2wash</b><em>'+esc(g.soon)+'</em><button class="go2-x" id="go2x" aria-label="'+esc(g.close)+'">&times;</button></div><p class="go2-tag">'+esc(g.tag)+'</p><p>'+esc(g.t)+'</p><a href="https://go2wash.eu/" target="_blank" rel="noopener">'+esc(g.cta)+'</a></div>'+
@@ -258,7 +288,7 @@ function chips(d){var r='<span>'+esc(d.coin)+'</span>';
   [['0,10 €',10],['0,20 €',20],['0,50 €',50],['1,00 €',100],['2,00 €',200]].forEach(function(c){r+='<button class="chip" data-coin="'+c[1]+'">'+c[0]+'</button>'});
   r+='<button class="chip" data-coin="100">'+esc(d.token)+'</button>';
   r+='<button class="chip chip-r" data-reset="1" aria-label="0,00 €"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.6-5.9M4 4v5h5"/></svg></button>';return r}
-function set(c,user){var d=D[c];cur=c;sel=null;document.documentElement.lang=c;document.title=d.title+' | Car Wash';
+function set(c,user){var d=D[c];cur=c;sel=null;document.documentElement.lang=c;document.title=d.title+' | Car Wash'+(LOC.name?' '+LOC.name:'');var lt=$('locTag');if(lt){lt.textContent=LOC.name||'';lt.hidden=!LOC.name}
   if(user){store('lang',c);try{history.replaceState(null,'','#'+c)}catch(e){}}
   [].forEach.call($('langs').children,function(b){b.setAttribute('aria-pressed',b.dataset.l===c)});
   $('title').textContent=d.title;$('hint').textContent=d.hint;
@@ -293,7 +323,6 @@ $('zoomClose').onclick=function(){z.close()};z.addEventListener('click',function
 addEventListener('resize',stick);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){fit($('mframe'));fit($('devices'));stick()});
 build();set(detect(),false);setCredit(0);
-try{$('mXml').href=URL.createObjectURL(new Blob([xml()],{type:'application/xml'}))}catch(e){}
 setInterval(function(){if(!document.hidden)renderPrices()},60000);
 addEventListener('hashchange',function(){var h=location.hash.slice(1);if(D[h]&&h!==cur)set(h,false)});
 })();
