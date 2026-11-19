@@ -79,7 +79,7 @@ function preset(){var m=/[?&]d=([a-z0-9]+)/.exec(location.search);if(!m)return;v
  else if(k==='gloss'&&!has('other')){S.dev='gloss'}
  else if(has('other')&&(k==='gloss'||k==='scent'||k==='carpet'||k==='deep')){S.dev='other';S.sub=k}
  else return;S.locked=true;S.step='form'}
-function head(){$('title').textContent=u('title');$('hint').textContent=u('sub');$('homeLink').textContent=u('home');document.title=u('title')+' | Car Wash'+(LOC.name?' '+LOC.name:'');var lt=$('locTag');if(lt){lt.textContent=LOC.name||'';lt.hidden=!LOC.name};document.documentElement.lang=cur;
+function head(){$('title').textContent=u('title');$('hint').textContent=u('sub');var hl=$('homeLink');hl.textContent='';var hf=document.createElement('span');hf.className='hf';hf.textContent=u('home');var hs=document.createElement('span');hs.className='hs';hs.textContent='← '+u('homeS');hl.appendChild(hf);hl.appendChild(hs);document.title=u('title')+' | Car Wash'+(LOC.name?' '+LOC.name:'');var lt=$('locTag');if(lt){lt.textContent=LOC.name||'';lt.hidden=!LOC.name};document.documentElement.lang=cur;
   [].forEach.call($('langs').children,function(b){b.setAttribute('aria-pressed',b.dataset.l===cur)});
   $('homeLink').href=$('homeLogo').href='index.html#'+cur}
 function render(keep){head();var h='';
