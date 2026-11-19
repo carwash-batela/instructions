@@ -31,7 +31,14 @@ window.RP={
   thanks:T('ZAHVALJUJEMO NA PRIJAVI KVARA I PROBLEMA|THANK YOU FOR REPORTING THE FAULT OR PROBLEM|VIELEN DANK FÜR DIE MELDUNG DER STÖRUNG ODER DES PROBLEMS|DZIĘKUJEMY ZA ZGŁOSZENIE AWARII I PROBLEMU|GRAZIE PER LA SEGNALAZIONE DEL GUASTO O DEL PROBLEMA|MERCI D’AVOIR SIGNALÉ LA PANNE OU LE PROBLÈME'),
   thanksT:T('Naš tim je obaviješten i riješit će problem što prije.|Our team has been notified and will fix the problem as soon as possible.|Unser Team wurde benachrichtigt und behebt das Problem so schnell wie möglich.|Nasz zespół został powiadomiony i jak najszybciej usunie problem.|Il nostro team è stato avvisato e risolverà il problema al più presto.|Notre équipe a été prévenue et réglera le problème au plus vite.'),
   test:T('Ovo je testna faza. U budućnosti razvijamo mogućnost da vam povratimo novac ili žetone.|This is a test phase. We are developing a way to refund your money or tokens in the future.|Dies ist eine Testphase. Wir entwickeln für die Zukunft eine Möglichkeit, Ihr Geld oder Ihre Token zu erstatten.|To faza testowa. Pracujemy nad możliwością zwrotu pieniędzy lub żetonów w przyszłości.|Questa è una fase di test. Stiamo sviluppando la possibilità di rimborsare denaro o gettoni in futuro.|Ceci est une phase de test. Nous développons la possibilité de rembourser votre argent ou vos jetons à l’avenir.'),
-  home:T('Natrag na upute|Back to instructions|Zurück zur Anleitung|Wróć do instrukcji|Torna alle istruzioni|Retour aux instructions')
+  home:T('Natrag na upute|Back to instructions|Zurück zur Anleitung|Wróć do instrukcji|Torna alle istruzioni|Retour aux instructions'),
+  mapBtn:T('Ne znam gdje je uređaj – odaberi na karti|Not sure where the device is – pick it on the map|Sie wissen nicht, wo das Gerät steht – auf der Karte wählen|Nie wiesz, gdzie jest urządzenie – wybierz na mapie|Non sai dov’è il dispositivo – scegli sulla mappa|Vous ne savez pas où est l’appareil – choisissez sur la carte'),
+  mapOr:T('ili|or|oder|lub|oppure|ou'),
+  mapTitle:T('Gdje se nalazi uređaj?|Where is the device?|Wo steht das Gerät?|Gdzie jest urządzenie?|Dov’è il dispositivo?|Où se trouve l’appareil ?'),
+  mapSub:T('Dodirnite obojeno područje na karti, a zatim odaberite uređaj.|Tap a coloured area on the map, then choose the device.|Tippen Sie auf einen farbigen Bereich der Karte und wählen Sie dann das Gerät.|Dotknij kolorowego obszaru na mapie, a potem wybierz urządzenie.|Tocca un’area colorata sulla mappa, poi scegli il dispositivo.|Touchez une zone colorée de la carte, puis choisissez l’appareil.'),
+  mapAria:T('Karta autopraonice|Car wash map|Karte der Waschanlage|Mapa myjni|Mappa dell’autolavaggio|Plan du lavage auto'),
+  mapPick:T('Odaberite uređaj u ovom području:|Choose the device in this area:|Wählen Sie das Gerät in diesem Bereich:|Wybierz urządzenie w tym obszarze:|Scegli il dispositivo in quest’area:|Choisissez l’appareil dans cette zone :'),
+  mapList:T('Ne vidite uređaj? Odaberite ga s popisa|Can’t see your device? Choose it from the list|Gerät nicht dabei? Aus der Liste wählen|Nie widzisz urządzenia? Wybierz z listy|Non vedi il dispositivo? Scegli dall’elenco|Vous ne voyez pas l’appareil ? Choisissez dans la liste')
  },
  dev:{
   changer:T('Mjenjač novca|Money changer|Geldwechsler|Wymieniarka pieniędzy|Cambiamonete|Changeur de monnaie'),
@@ -70,6 +77,20 @@ window.RP={
   noCloth:T('Nije izbacilo krpu|Cloth was not dispensed|Tuch wurde nicht ausgegeben|Nie wydało ściereczki|Il panno non è uscito|Le chiffon n’est pas sorti'),
   redLamp:T('Svijetli crvena lampica|A red light is on|Eine rote Lampe leuchtet|Świeci się czerwona lampka|Si accende una spia rossa|Un voyant rouge est allumé'),
   noLiquid:T('Aparat ne izbacuje tekućinu|Machine does not dispense liquid|Gerät gibt keine Flüssigkeit aus|Urządzenie nie dozuje płynu|La macchina non eroga liquido|L’appareil ne distribue pas de liquide')
+ },
+ /* Karta: točke poligona su u pikselima slike assets/map.jpg (624×912). ~ = prijelom retka u oznaci */
+ map:{
+  w:624,h:912,img:'assets/map.jpg',
+  zones:{
+   z1:{col:'#4aa82b',pill:'#2e7d1c',pts:[[89,222],[37,549],[100,560],[153,232]],at:[92,330],vac:[1,2,3],other:['gloss'],
+    t:T('Usisavači 1–3~+ sjajilo|Vacuums 1–3~+ tire gloss|Staubsauger 1–3~+ Reifenglanz|Odkurzacze 1–3~+ połysk opon|Aspirapolvere 1–3~+ lucidante|Aspirateurs 1–3~+ brillant')},
+   z2:{col:'#17607f',pill:'#14587a',pts:[[81,733],[220,780],[423,188],[284,140]],at:[218,560],box:[1,2,3,4,5,6,7,8,9],
+    t:T('Boxevi~1–9|Wash bays~1–9|Waschboxen~1–9|Boksy~1–9|Box di lavaggio~1–9|Boxes de lavage~1–9')},
+   z3:{col:'#ea7132',pill:'#b8500f',pts:[[260,870],[342,898],[420,669],[339,641]],at:[340,769],vac:[4,5,6],
+    t:T('Usisavači~4–6|Vacuums~4–6|Staubsauger~4–6|Odkurzacze~4–6|Aspirapolvere~4–6|Aspirateurs~4–6')},
+   z4:{col:'#a02b93',pill:'#862079',pts:[[459,132],[428,208],[487,284],[452,460],[503,480],[551,356],[560,241],[532,181]],at:[494,300],vac:[7,8,9,10],other:['scent','deep'],
+    t:T('Usisavači 7–10~+ miris, dubinsko|Vacuums 7–10~+ scent, deep clean|Staubsauger 7–10~+ Duft, Tiefenrein.|Odkurzacze 7–10~+ zapach, głębokie|Aspirapolvere 7–10~+ profumo, profonda|Aspirateurs 7–10~+ parfum, profond')}
+  }
  },
  /* koji problemi pripadaju kojem uređaju; objekt = grupe, niz = jednostavan popis */
  probs:{

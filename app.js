@@ -5,6 +5,7 @@ var EDGE={wash:'#c00000',wax:'#d9a300',rinse:'#0070c0',rim:'#4a4a4a',foam:'#e033
 var $=function(i){return document.getElementById(i)},store=function(k,v){try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){}};
 var reduce=function(){return matchMedia('(prefers-reduced-motion:reduce)').matches};
 var order=['hr','en','de','pl','it','fr'];
+var DQ=(function(){var m=/[?&]d=(changer|cloths|gloss|scent|carpet|deep|box[1-9]|vac10|vac[1-9])(?:&|$)/.exec(location.search);return m?m[1]:''})();
 var eur=function(c){return (c/100).toFixed(2).replace('.',',')};
 
 /* ---------- 7-segment display ---------- */
@@ -268,7 +269,7 @@ function set(c,user){var d=D[c];cur=c;sel=null;document.documentElement.lang=c;d
     return '<article class="card" data-id="'+p.id+'" style="--c:'+EDGE[p.id]+';--f:'+FILL[p.id]+'">'+
     '<button class="card-h" aria-pressed="false"><span class="dot"></span><span class="ttl"><b>'+esc(p.name)+'</b><small>'+esc(p.btn)+'</small></span>'+
     (p.tk?'<span class="time" data-tk="'+p.tk+'"></span>':'')+'</button>'+(tags?'<div class="tags">'+tags+'</div>':'')+'<p>'+esc(p.text)+'</p></article>'}).join('');
-  renderFoot(d);$('rpBtn').textContent=RP.ui.btn[c];$('rpFab').href='report.html#'+c;renderExchange(d);renderWarn(d);renderDevices(d);renderGo(d);
+  renderFoot(d);$('rpBtn').textContent=RP.ui.btn[c];$('rpFab').href='report.html'+(DQ?'?d='+DQ:'')+'#'+c;renderExchange(d);renderWarn(d);renderDevices(d);renderGo(d);
   renderPrices();
   $('mPrice').textContent=d.pr.title;
   $('rate').textContent=d.rate;

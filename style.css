@@ -272,8 +272,43 @@ h2{margin:0 0 10px;font:700 1.95rem/1.1 'Barlow Condensed',sans-serif}
 .bx-art{display:block;width:100%;max-width:420px;height:auto;margin:0 auto 14px;border-radius:14px}
 .bx-lamp{animation:bxl 1s steps(2,end) infinite}
 .bx-lampH{transform-box:fill-box;transform-origin:center;animation:bxh 1s ease-out infinite}
-.bx-hoseL{transform-origin:112px 58px;animation:bxs 3.2s ease-in-out infinite}
+.bx-hoseL{transform-origin:102px 62px;animation:bxs 3.2s ease-in-out infinite}
 .bx-spray{stroke-dasharray:6 8;animation:bxd .6s linear infinite}
 @keyframes bxl{50%{opacity:.35}}@keyframes bxh{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2.4)}}
 @keyframes bxs{50%{transform:rotate(3deg)}}@keyframes bxd{to{stroke-dashoffset:-14}}
 @media (prefers-reduced-motion:reduce){.bx-lamp,.bx-lampH,.bx-hoseL,.bx-spray{animation:none}}
+
+/* karta */
+.rp-or{display:flex;align-items:center;gap:12px;margin:18px 0 12px;color:var(--mute);font-weight:700;text-transform:uppercase;font-size:.9rem;letter-spacing:.08em}
+.rp-or:before,.rp-or:after{content:"";flex:1;height:2px;background:#e3e0d8}
+.rp-mapbtn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:64px;padding:10px 16px;border:3px solid var(--ink);background:#fff;border-radius:14px;font:700 1.15rem/1.2 Barlow,sans-serif;color:var(--ink2);text-align:left}
+.rp-mapbtn svg{width:34px;height:34px;flex:none}
+.rp-mapbtn:hover,.rp-mapbtn:active{background:var(--foam)}
+.rp-map{max-width:460px;margin:0 auto 14px;border:3px solid var(--ink);border-radius:14px;overflow:hidden;background:#ddd;line-height:0}
+.rp-map svg{display:block;width:100%;height:auto;-webkit-tap-highlight-color:transparent}
+.mz-g{cursor:pointer;outline:none}
+.mz{fill-opacity:.38;stroke-width:3;stroke-linejoin:round;transition:fill-opacity .2s}
+.mz-g:hover .mz{fill-opacity:.55}
+.mz-g.on .mz{fill-opacity:.62;stroke:#fff;stroke-width:5}
+.mz-g:focus-visible .mz{stroke:#fff;stroke-width:6}
+.has-sel .mz-g:not(.on) .mz{fill-opacity:.2}
+.mp{cursor:pointer}
+.mp rect{stroke:#fff;stroke-width:2.5}
+.mp text{font:800 27px/1 'Barlow Condensed',sans-serif;fill:#fff;letter-spacing:.03em;text-transform:uppercase}
+@media (prefers-reduced-motion:no-preference){.rp-map:not(.has-sel) .mz{animation:mzp 2.4s ease-in-out infinite}}
+@keyframes mzp{50%{fill-opacity:.58}}
+.rp-maphint{text-align:center;margin:0 0 4px}
+.rp-pick{margin-top:6px;padding:14px;border-radius:14px;background:var(--foam);border-left:8px solid var(--zc,var(--sun));scroll-margin-bottom:12px}
+.rp-pick h3{display:flex;align-items:center;gap:10px;margin:0 0 4px;font:800 1.5rem/1.1 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--ink2)}
+.rp-pick h3 i{width:16px;height:16px;border-radius:50%;background:var(--zc);flex:none}
+.rp-pick .rp-s{margin:0 0 10px}
+.rp-pg{margin:10px 0 6px;font-weight:700;color:var(--mute)}
+.rp-pick .rp-nums,.rp-pick .rp-sub{margin-bottom:8px}
+.rp-pick .rp-num:active,.rp-pick .rp-opt:active{background:var(--sun);border-color:var(--sun)}
+
+/* usisavač: crvena lampica i njihanje crijeva */
+.vc-lamp{animation:bxl 1s steps(2,end) infinite}
+.vc-hose{transform-box:view-box;transform-origin:168px 76px;animation:vcs 3.4s ease-in-out infinite}
+.rp-big svg .vc-hose{transform-origin:33px 12px}
+@keyframes vcs{50%{transform:rotate(2.2deg)}}
+@media (prefers-reduced-motion:reduce){.vc-lamp,.vc-hose{animation:none}}
